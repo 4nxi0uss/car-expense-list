@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.scss'
+import Header from './components/Header/Header';
+
 
 const App =() =>(
+    
 <>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem voluptatem, ipsum inventore sequi iure tempore quisquam error nobis qui tenetur doloremque sed cumque quas ratione quidem cupiditate saepe. Placeat, magnam!</p>
+<Header/>
 </>
 );
 
