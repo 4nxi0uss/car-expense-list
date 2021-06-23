@@ -1,0 +1,23 @@
+.menu{
+    
+    flex-direction: row;
+    // display: flex;
+    background-color: rgba(182, 177, 177, 0.568);
+    position: relative;
+    padding: 15px;
+    align-content: center;
+    row-gap: 25px;
+
+    .list{
+        list-style: none;
+        display: grid;
+        // grid: ;
+    }
+
+    .link{
+       grid-row:auto;
+       gap: 25px;
+        text-transform: uppercase;
+    }
+
+}
