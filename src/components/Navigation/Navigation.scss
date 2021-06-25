@@ -1,23 +1,28 @@
-.menu{
-    
-    flex-direction: row;
-    // display: flex;
-    background-color: rgba(182, 177, 177, 0.568);
-    position: relative;
-    padding: 15px;
-    align-content: center;
-    row-gap: 25px;
+.menu {
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    padding: 10px;
+    background-color: rgba(175, 175, 175, 0.514);
+    justify-content: center;
 
-    .list{
-        list-style: none;
-        display: grid;
-        // grid: ;
+    .list {
+        list-style-type: none;
+        display: inline;
+        padding-right: 15px;
     }
 
-    .link{
-       grid-row:auto;
-       gap: 25px;
-        text-transform: uppercase;
+    .link {
+        color: black;
+        font-size: x-large;
+        text-decoration: unset;
+        transition: 0.5s;
     }
+
+    .link:hover {
+        color: red;
+    }
+
 
 }

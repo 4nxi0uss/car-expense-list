@@ -1,0 +1,22 @@
+.divForm {
+    display: grid;
+    position: relative;
+    max-width: 1366px;
+    background-color: rgba(173, 106, 106, 0.616);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 200px;
+
+
+    .form {
+        flex-direction: row;
+        margin: 10px;
+        padding: 10px;
+        // flex-grow: ;
+    }
+
+    .submitBtn {
+        padding: 20px;
+    }
+
+}

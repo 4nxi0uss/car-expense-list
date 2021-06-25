@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../Navigation/Navigation.scss'
 
-const Navigation =()=>{
+const Navigation = () => {
 
-    return(
+    return (
         <menu className='menu'>
-            <li className="list">
-                <nav>
+            <nav className='nav'>
+                <li className="list">
                     <Link className='link' to="/">Strona główna</Link>
-                    <Link className='link' to="/">Wdatki</Link>
-                </nav>
-            </li>
+                </li>
+                <li className="list">
+                    <Link className='link' to="/expenses">Wdatki</Link>
+                </li>
+            </nav>
         </menu>
     )
 }

@@ -1,16 +1,15 @@
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   height: 100vh;
 }
 
-.content{
-  height: calc(100% - 60px);
-  margin-top:60px;
+.content {
+  height: calc(100% - 120px);
+  margin-top: 60px;
   display: flex;
 }
