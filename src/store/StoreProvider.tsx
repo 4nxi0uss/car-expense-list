@@ -18,8 +18,9 @@ const StoreProvider = ({ children }: any) => {
     const [price, setPrice] = useState<number>(Number(''));
     const [thing, setThing] = useState<string>('');
     const [buyDate, setBuyDate] = useState<string>('');
+    const [carModel, setCarModel] = useState<string>('');
     return (
-        <StoreContex.Provider value={{ price, setPrice, thing, setThing, buyDate, setBuyDate }}>
+        <StoreContex.Provider value={{ price, setPrice, thing, setThing, buyDate, setBuyDate,carModel, setCarModel }}>
             {children}
         </StoreContex.Provider>
     )

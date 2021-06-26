@@ -7,7 +7,7 @@ import "./ContentForm.scss"
 
 
 const ContentForm = () => {
-    const { price, setPrice, thing, setThing, buyDate, setBuyDate } = useContext(StoreContex)
+    const { price, setPrice, thing, setThing, buyDate, setBuyDate,carModel, setCarModel } = useContext(StoreContex)
     // console.log(Date())
 
     const handlePrice = (event: any) => {
@@ -50,15 +50,23 @@ const ContentForm = () => {
             <form className='form' method='post' >
                 <label className='label'>
                     Cena:
-                    <input onChange={handlePrice} type="number" value={price} placeholder="cena za rzeczy... np: 50" /> zł
+                    <input onChange={handlePrice} type="number" value={price} placeholder="cena za rzeczy... np: 50 zł" required/> zł
                 </label>
                 <label className='label'>
                     Rzecz:
-                    <input onChange={handleThing} type="text" value={thing} placeholder="Zakup... np: Paliwo" />
+                    <input onChange={handleThing} type="text" value={thing} placeholder="Zakup... np: Paliwo" required />
                 </label>
                 <label className='label'>
                     Data:
-                    <input onChange={handleBuyDate} type="date" value={buyDate} />
+                    <input onChange={handleBuyDate} type="date" value={buyDate} required/>
+                </label>
+                <label className='label' >
+                    Auto:
+                    <select name="auto" id="auto" required>
+                        <option value="ford">Ford</option>
+                        <option value="hyundai">Hyundai</option>
+                        <option value="volkswagen">Volkswagen</option>
+                    </select>
                 </label>
             </form>
             <button onClick={handleSubmit} className='submitBtn' type='submit'>Zapisz</button>
