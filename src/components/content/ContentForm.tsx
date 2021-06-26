@@ -35,9 +35,14 @@ const ContentForm = () => {
             price: price,
             thing,
             date: buyDate,
+            carModel,
         }
         console.log(objectThing)
         resetFormValues()
+    }
+
+    const handleCarModel =(event:any)=>{
+        setCarModel(event.target.value)
     }
 
     const handleReset = () => {
@@ -62,7 +67,7 @@ const ContentForm = () => {
                 </label>
                 <label className='label' >
                     Auto:
-                    <select name="auto" id="auto" required>
+                    <select onChange={handleCarModel} name="auto" id="auto" required value={carModel}>
                         <option value="ford">Ford</option>
                         <option value="hyundai">Hyundai</option>
                         <option value="volkswagen">Volkswagen</option>
