@@ -1,16 +1,17 @@
 import { initializeApp } from "firebase/app"
-import { getDatabase} from "firebase/database"
+// import { getDatabase} from "firebase/database"
 
 const config = {
-  apiKey: "AIzaSyCx7P5H6CrMqbY8J3O0jd5Yy6Z27srH8Lc",
-  authDomain: "car-payment-calculator-a1bca.firebaseapp.com",
-  projectId: "car-payment-calculator-a1bca",
-  storageBucket: "car-payment-calculator-a1bca.appspot.com",
-  messagingSenderId: "396010861498",
-  appId: "1:396010861498:web:b0570993ee769cc0912383"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
   };
 
   const firebaseApp = initializeApp(config);
-  export const databaseRef = getDatabase();
+  // export const databaseRef = getDatabase();
   // export const todosRef = databaseRef.child("todos")
   export default firebaseApp;

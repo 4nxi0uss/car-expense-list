@@ -4,7 +4,7 @@ import { StoreContex } from '../../store/StoreProvider';
 
 import firebaseApp from '../FIrebaseUtility/Firebase';
 
-import { databaseRef } from '../FIrebaseUtility/Firebase';
+// import { databaseRef } from '../FIrebaseUtility/Firebase';
 
 import "./ContentForm.scss"
 
@@ -18,7 +18,7 @@ const ContentForm = () => {
     }
      
     console.log(firebaseApp)
-    console.log(databaseRef)
+    // console.log(databaseRef)
 
     const handlePrice = (event: any) => {
         const priceValue = event?.target.value
