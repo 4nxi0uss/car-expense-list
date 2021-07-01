@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-// import { getDatabase} from "firebase/database"
+import { getDatabase } from "firebase/database"
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -12,6 +12,5 @@ const config = {
   };
 
   const firebaseApp = initializeApp(config);
-  // export const databaseRef = getDatabase();
-  // export const todosRef = databaseRef.child("todos")
+  export const database = getDatabase();
   export default firebaseApp;

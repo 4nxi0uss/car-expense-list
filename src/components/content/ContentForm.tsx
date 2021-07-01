@@ -2,23 +2,40 @@ import * as React from 'react';
 import { useContext } from 'react';
 import { StoreContex } from '../../store/StoreProvider';
 
-import firebaseApp from '../FIrebaseUtility/Firebase';
+import { ref, set } from "firebase/database"
+// import { onValue } from "firebase/database"
 
-// import { databaseRef } from '../FIrebaseUtility/Firebase';
+import { database } from '../FIrebaseUtility/Firebase';
 
 import "./ContentForm.scss"
+// import { useEffect } from 'react';
+// import { useState } from 'react';
 
 const ContentForm = () => {
-        const { price, setPrice, thing, setThing, buyDate, setBuyDate,carBrand, setCarBrand } = useContext(StoreContex)
+    // const [dataValue, setDataValue] = useState<object>()
+    const { price, setPrice, thing, setThing, buyDate, setBuyDate, carBrand, setCarBrand } = useContext(StoreContex)
     let objectThing = {
-        price: price,
+        price,
         thing,
         date: buyDate,
-        carBrand: carBrand,
+        carBrand,
     }
-     
-    console.log(firebaseApp)
-    // console.log(databaseRef)
+
+    // useEffect(() => {
+    //     const test = ref(database, '/ToDo')
+    //     onValue(test, (snapshot) => { setDataValue(snapshot.val()) })
+    // }, [database])
+
+    const uploadData = (price: number, thing: Text, buyDate: Text, carBrand: Text) => {
+        set(ref(database, 'ToDo/55'), {
+            price,
+            thing,
+            date: buyDate,
+            carBrand
+        });
+    }
+
+
 
     const handlePrice = (event: any) => {
         const priceValue = event?.target.value
@@ -46,11 +63,12 @@ const ContentForm = () => {
             date: buyDate,
             carBrand,
         }
+        uploadData(price, thing, buyDate, carBrand)
         console.log(objectThing)
         resetFormValues()
     }
 
-    const handleCarModel =(event:any)=>{
+    const handleCarModel = (event: any) => {
         setCarBrand(event.target.value)
     }
 
@@ -61,18 +79,18 @@ const ContentForm = () => {
 
     return (
         <div className='divForm'>
-            <form className='form' method='post' >
+            <form className='form' method='post' onSubmit={handleSubmit}>
                 <label className='label'>
                     Cena:
-                    <input onChange={handlePrice} type="number" value={price === 0 ?"":price} placeholder="cena za rzeczy... np: 50 zł" required/> zł
+                    <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" required={true} /> zł
                 </label>
                 <label className='label'>
                     Rzecz:
-                    <input onChange={handleThing} type="text" value={thing} placeholder="Zakup... np: Paliwo" required />
+                    <input onChange={handleThing} type="text" value={thing} placeholder="Zakup... np: Paliwo" required={true} />
                 </label>
                 <label className='label'>
                     Data:
-                    <input onChange={handleBuyDate} type="date" value={buyDate} required/>
+                    <input onChange={handleBuyDate} type="date" value={buyDate} required />
                 </label>
                 <label className='label' >
                     Auto:
@@ -84,7 +102,7 @@ const ContentForm = () => {
                     </select>
                 </label>
             </form>
-            <button onClick={handleSubmit} className='submitBtn' type='submit'>Zapisz</button>
+            <button type='submit' className='submitBtn' >Zapisz</button> {/*i must repair form, buttons must be in form marker. addicionaly i must change a style file*/}
             <button onClick={handleReset} className='btn' type='button'>Anuluj</button>
         </div>
 
