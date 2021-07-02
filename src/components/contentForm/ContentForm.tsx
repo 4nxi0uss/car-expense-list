@@ -1,49 +1,45 @@
 import * as React from 'react';
-// import { useContext } from 'react';
-// import { StoreContex } from '../../store/StoreProvider';
 
 import { nanoid } from 'nanoid';
 
 import { ref, set } from "firebase/database"
-// import { onValue } from "firebase/database"
 
 import { database } from '../FIrebaseUtility/Firebase';
 
 import "./ContentForm.scss"
-// import { useEffect } from 'react';
 import { useState } from 'react';
 
 const ContentForm = () => {
-    // const [dataValue, setDataValue] = useState<object>()
+
     const [price, setPrice] = useState<number>(Number(''));
-    const [thing, setThing] = useState<string>('');
+    const [productName, setProductName] = useState<string>('');
     const [buyDate, setBuyDate] = useState<string>('');
     const [carBrand, setCarBrand] = useState<string>('');
-    // const { price, setPrice, thing, setThing, buyDate, setBuyDate, carBrand, setCarBrand } = useContext(StoreContex)
-    let objectThing = {
+
+    const id = nanoid()
+    let objectThing ={
         price,
-        thing,
+        productName: productName,
         date: buyDate,
         carBrand,
+        id
     }
 
-
-    // useEffect(() => {
-    //     const test = ref(database, '/ToDo')
-    //     onValue(test, (snapshot) => { setDataValue(snapshot.val()) })
-    // }, [database])
-
-    const uploadData = (price: number, thing: string, buyDate: string, carBrand: string) => {
-        set(ref(database, `ToDo/${nanoid()}`), {
+    const uploadData = (price: number, productName: string, buyDate: string, carBrand: string) => {
+        
+        // set(ref(database, `ToDo/${nanoid()}`), {
+        set(ref(database, `/ToDo/${id}`), {
+            id,
             price,
-            thing,
+            productName: productName,
             date: buyDate,
             carBrand,
             createDate: new Date().toUTCString()
         });
+        // set(ref(database, `ToDo/`), (prev:any) => [...prev, objectThing]);
     }
 
-
+    // (prev => [...prev, formAuthor])
 
     const handlePrice = (event: any) => {
         const priceValue = event?.target.value
@@ -51,7 +47,7 @@ const ContentForm = () => {
     }
 
     const handleThing = (event: any) => {
-        setThing(event?.target.value)
+        setProductName(event?.target.value)
     }
     const handleBuyDate = (event: any) => {
         setBuyDate(event?.target.value)
@@ -59,20 +55,21 @@ const ContentForm = () => {
 
     const resetFormValues = () => {
         setPrice(Number(''));
-        setThing('');
+        setProductName('');
         setBuyDate('')
         setCarBrand('')
     }
 
-    const handleSubmit = (e:any) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault()
         objectThing = {
             price,
-            thing,
+            productName: productName,
             date: buyDate,
             carBrand,
+            id
         }
-        uploadData(price, thing, buyDate, carBrand)
+        uploadData(price, productName, buyDate, carBrand)
         console.log(objectThing)
         resetFormValues()
     }
@@ -81,7 +78,7 @@ const ContentForm = () => {
         setCarBrand(event.target.value)
     }
 
-    const handleReset = (e:any) => {
+    const handleReset = (e: any) => {
         e.preventDefault()
         resetFormValues()
         console.log('reset')
@@ -96,7 +93,7 @@ const ContentForm = () => {
                 </label>
                 <label className='label'>
                     Rzecz:
-                    <input onChange={handleThing} type="text" value={thing} placeholder="Zakup... np: Paliwo" required />
+                    <input onChange={handleThing} type="text" value={productName} placeholder="Zakup... np: Paliwo" required />
                 </label>
                 <label className='label'>
                     Data:
@@ -104,7 +101,7 @@ const ContentForm = () => {
                 </label>
                 <label className='label' >
                     Auto:
-                    <select onChange={handleCarModel} name="auto" id="auto"  value={carBrand} required={carBrand === 'none'?true:false}>
+                    <select onChange={handleCarModel} name="auto" id="auto" value={carBrand} required={carBrand === 'none' ? true : false}>
                         <option value='none'  > - Wybierz -</option>
                         <option value="ford">Ford</option>
                         <option value="hyundai">Hyundai</option>
@@ -114,7 +111,7 @@ const ContentForm = () => {
                 <button type='submit' className='submitBtn' >Zapisz</button>
                 <button onClick={handleReset} className='btn' type='button'>Anuluj</button>
             </form>
-            
+
         </div>
 
     )

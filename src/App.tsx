@@ -5,7 +5,7 @@ import './App.scss'
 
 import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
-import ContentForm from './components/content/ContentForm';
+import Content from './components/content/Content';
 
 import StoreProvider from './store/StoreProvider';
 
@@ -16,7 +16,7 @@ const App = () => (
         <Router>
             <div className="content">
                 <Navigation />
-                <ContentForm />
+                <Content />
             </div>
         </Router>
     </StoreProvider>

@@ -1,0 +1,9 @@
+.main{
+    position: relative;
+    max-width: 1366px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(200px - 120px);
+    // background-color: black;
+    height: calc(100%-120px);
+}
