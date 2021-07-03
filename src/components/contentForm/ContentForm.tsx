@@ -17,7 +17,7 @@ const ContentForm = () => {
     const [carBrand, setCarBrand] = useState<string>('');
 
     const id = nanoid()
-    let objectThing ={
+    let objectThing = {
         price,
         productName: productName,
         date: buyDate,
@@ -26,7 +26,7 @@ const ContentForm = () => {
     }
 
     const uploadData = (price: number, productName: string, buyDate: string, carBrand: string) => {
-        
+
         // set(ref(database, `ToDo/${nanoid()}`), {
         set(ref(database, `/ToDo/${id}`), {
             id,
@@ -36,10 +36,8 @@ const ContentForm = () => {
             carBrand,
             createDate: new Date().toUTCString()
         });
-        // set(ref(database, `ToDo/`), (prev:any) => [...prev, objectThing]);
     }
 
-    // (prev => [...prev, formAuthor])
 
     const handlePrice = (event: any) => {
         const priceValue = event?.target.value

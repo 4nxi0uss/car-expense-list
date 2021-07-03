@@ -1,8 +1,7 @@
-import * as React from 'react';
 import { useEffect } from 'react';
 import { useState, createContext } from 'react';
 
-import { onValue,ref } from '@firebase/database';
+import { onValue, ref } from '@firebase/database';
 import { database } from '../components/FIrebaseUtility/Firebase';
 
 export const StoreContex = createContext<null | any>(null)
@@ -19,7 +18,7 @@ export const StoreContex = createContext<null | any>(null)
 
 
 const StoreProvider = ({ children }: any) => {
-    const [list, setList]=useState<string | object>('')
+    const [list, setList] = useState<string | object>('')
     // const [price, setPrice] = useState<number>(Number(''));
     // const [thing, setThing] = useState<string>('');
     // const [buyDate, setBuyDate] = useState<string>('');
