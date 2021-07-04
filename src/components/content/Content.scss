@@ -1,9 +1,11 @@
 .main{
-    position: relative;
-    max-width: 1366px;
-    left: 50%;
-    transform: translateX(-50%);
+    // max-width: 1366px;
+    
+    position:relative;
+    width: 100vw;
+    // left: 50%;
+    // transform: translateX(-50%);
     top: calc(200px - 120px);
-    // background-color: black;
-    height: calc(100%-120px);
+    // background-color: rgba(180, 97, 97, 0.301);
+    // height: calc(100%-120px);
 }

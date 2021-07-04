@@ -4,9 +4,11 @@
     // grid-template-rows: 1fr 1fr;
     position: relative;
     background-color: rgba(173, 106, 106, 0.616);
+    max-width: 1000px;
     // max-width: 1366px;
-    // left: 50%;
-    // transform: translateX(-50%);
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
     // top: 200px;
 
     .form {

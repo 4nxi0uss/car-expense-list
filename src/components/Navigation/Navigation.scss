@@ -1,10 +1,13 @@
 .menu {
     left: 0;
     right: 0;
+    top: 60px;
     position: fixed;
     display: flex;
+    z-index: 10;
     padding: 10px;
-    background-color: rgba(175, 175, 175, 0.514);
+    background-color: rgb(228, 226, 226);
+    // background-color: rgba(175, 175, 175, 0.514);
     justify-content: center;
 
     .list {
@@ -15,6 +18,7 @@
 
     .link {
         color: black;
+        font-weight: 500;
         font-size: x-large;
         text-decoration: unset;
         transition: 0.5s;

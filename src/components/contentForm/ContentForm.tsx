@@ -17,13 +17,13 @@ const ContentForm = () => {
     const [carBrand, setCarBrand] = useState<string>('');
 
     const id = nanoid()
-    let objectThing = {
-        price,
-        productName: productName,
-        date: buyDate,
-        carBrand,
-        id
-    }
+    // let objectThing = {
+    //     price,
+    //     productName: productName,
+    //     date: buyDate,
+    //     carBrand,
+    //     id
+    // }
 
     const uploadData = (price: number, productName: string, buyDate: string, carBrand: string) => {
 
@@ -60,15 +60,15 @@ const ContentForm = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        objectThing = {
-            price,
-            productName: productName,
-            date: buyDate,
-            carBrand,
-            id
-        }
+        // objectThing = {
+        //     price,
+        //     productName: productName,
+        //     date: buyDate,
+        //     carBrand,
+        //     id
+        // }
         uploadData(price, productName, buyDate, carBrand)
-        console.log(objectThing)
+        // console.log(objectThing)
         resetFormValues()
     }
 
@@ -83,7 +83,7 @@ const ContentForm = () => {
     }
 
     return (
-        <div className='divForm'>
+        <section className='divForm'>
             <form className='form' method='post' onSubmit={handleSubmit}>
                 <label className='label'>
                     Cena:
@@ -110,7 +110,7 @@ const ContentForm = () => {
                 <button onClick={handleReset} className='btn' type='button'>Anuluj</button>
             </form>
 
-        </div>
+        </section>
 
     )
 }
