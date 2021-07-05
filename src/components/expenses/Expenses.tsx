@@ -7,64 +7,60 @@ import ExpenseList from './subcomponent/ExpenseList/ExpenseList';
 import './Expenses.scss'
 
 const Expenses = () => {
+
     const { list } = useContext(StoreContex)
-    // console.log(list)
 
     const keyObjectArray: string[] = []
     for (const property in list) {
         keyObjectArray.push(property)
     }
-    //   console.log(arr)
 
-    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} />))
+    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} id={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} />))
 
-    // console.log(keyObjectArray)
 
     const calculatedExpenses = () => {
         let spendMoney: number = 0;
-        keyObjectArray.forEach((el: string) => ( spendMoney += Number(list[`${el}`].price)));
-        
+        keyObjectArray.forEach((el: string) => (spendMoney += Number(list[`${el}`].price)));
+
         return (spendMoney)
     }
 
-    // console.log(calculatedExpenses())
 
 
 
 
-    // console.log(typeof(calculatedExpenses()))
- 
-// const prettierCurencyValue = (value:string)=>{
+
+    // const prettierCurencyValue = (value:string)=>{
     // console.log(value.includes('.'))
     // console.log(value.indexOf('.'))
     // console.log(value.slice(0, 4))
     // let prettierValue : any ='';
     // if (value.includes('.')){
-        // prettierValue = value.slice(0, value.indexOf('.'));
-        // return( value.slice(0, value.indexOf('.')))
-        
+    // prettierValue = value.slice(0, value.indexOf('.'));
+    // return( value.slice(0, value.indexOf('.')))
+
     // }
     // console.log(prettierValue.length)
     // console.log(Array(prettierValue))
 
-    
+
     // prettierValue = prettierValue.split('')
     // prettierValue = Array(prettierValue)
     // console.log(prettierValue)
     // console.log(typeof(prettierValue))
     // console.log(prettierValue[0].join(' ') )
 
-//     for (let i:number=0 ; i <prettierValue.length; i++){
-//         if(i%3 === 0){
+    //     for (let i:number=0 ; i <prettierValue.length; i++){
+    //         if(i%3 === 0){
 
-//         }
-//     }
+    //         }
+    //     }
 
-//     return( prettierValue)
-// }
+    //     return( prettierValue)
+    // }
 
-// prettierCurencyValue(calculatedExpenses())
-// console.log(prettierCurencyValue(calculatedExpenses()))
+    // prettierCurencyValue(calculatedExpenses())
+    // console.log(prettierCurencyValue(calculatedExpenses()))
 
     return (
         <section className='sectionExpenses'>
