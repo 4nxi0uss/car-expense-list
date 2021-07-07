@@ -25,12 +25,12 @@ const ContentForm = () => {
     //     id
     // }
 
-    const uploadData = (price: number, productName: string, buyDate: string, carBrand: string) => {
+    const sendData = (price: number, productName: string, buyDate: string, carBrand: string) => {
 
         // set(ref(database, `ToDo/${nanoid()}`), {
         set(ref(database, `/ToDo/${id}`), {
             id,
-            price,
+            price: Number(price),
             productName: productName,
             date: buyDate,
             carBrand,
@@ -50,6 +50,9 @@ const ContentForm = () => {
     const handleBuyDate = (event: any) => {
         setBuyDate(event?.target.value)
     }
+    const handleCarModel = (event: any) => {
+        setCarBrand(event.target.value)
+    }
 
     const resetFormValues = () => {
         setPrice(Number(''));
@@ -67,13 +70,9 @@ const ContentForm = () => {
         //     carBrand,
         //     id
         // }
-        uploadData(price, productName, buyDate, carBrand)
+        sendData(price, productName, buyDate, carBrand)
         // console.log(objectThing)
         resetFormValues()
-    }
-
-    const handleCarModel = (event: any) => {
-        setCarBrand(event.target.value)
     }
 
     const handleReset = (e: any) => {

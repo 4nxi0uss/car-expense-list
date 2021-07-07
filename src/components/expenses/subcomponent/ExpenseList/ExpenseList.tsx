@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
+
 import { StoreContex } from '../../../../store/StoreProvider';
 
 import { ref, remove } from '@firebase/database';
@@ -7,7 +8,11 @@ import { database } from '../../../FIrebaseUtility/Firebase';
 
 import './ExpenseList.scss'
 
+import EditMode from '../EditMode/EditMode';
+
 const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 50, carBrand = "Ford", id }: any) => {
+
+    const [isOpenPopup, setIsOpenPopup] = useState(false)
 
     const { list } = useContext(StoreContex)
 
@@ -21,8 +26,8 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
         keyObjectArrayInExpenses.map((key: any) => {
 
             if (list[`${key}`].id === id) {
-                const test = ref(database, `/ToDo/${id}`);
-                remove(test)
+                const deleteToDoObject = ref(database, `/ToDo/${id}`);
+                remove(deleteToDoObject)
             }
 
             return (null)
@@ -31,10 +36,24 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
         )
     }
 
+    const hidePopup = (event:any) => {
+        if(event){
+           event.preventDefault() 
+        }
+        
+        setIsOpenPopup(false);
+    }
+
+
+    const handleEdit = ()=>{
+        console.log('edit')
+            setIsOpenPopup(true)  
+    }
+
     // edit mode with drop down menu or with popup window
 
 
-    return (
+    return ( 
         <li className="liList">
             <article className="expenseList">
                 <h3>{`Zakupy dotyczące utrzymania samochodu`}</h3>
@@ -43,7 +62,8 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
                 <p>{`Kwota zakupu: ${price}zł`}</p>
                 <p>{`Zakupiony w dniu: ${date}`}</p>
                 <button onClick={handleDelete} className='btn'>usuń</button>
-                <button className='btn'>edytuj</button>
+                <button onClick={handleEdit} className='btn'>edytuj</button>
+                <EditMode id={id} isOpenPopup={isOpenPopup} hidePopup={hidePopup}/>
             </article>
         </li>
     )
