@@ -53,7 +53,7 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
             setShowText(true)
         } else {
             hidePopup()
-            console.log(price, productName, buyDate, carBrand)
+            // console.log(price, productName, buyDate, carBrand)
             setShowText(false)
 
             keyObjectArrayInEditMode.map((key: any) => {

@@ -84,19 +84,19 @@ const ContentForm = () => {
     return (
         <section className='divForm'>
             <form className='form' method='post' onSubmit={handleSubmit}>
-                <label className='label'>
+                <label className='label label1'>
                     Cena:
-                    <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" required /> zł
+                    <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" required />
                 </label>
-                <label className='label'>
+                <label className='label label2'>
                     Rzecz:
                     <input onChange={handleThing} type="text" value={productName} placeholder="Zakup... np: Paliwo" required />
                 </label>
-                <label className='label'>
+                <label className='label label3'>
                     Data:
                     <input onChange={handleBuyDate} type="date" value={buyDate} required />
                 </label>
-                <label className='label' >
+                <label className='label label4' >
                     Auto:
                     <select onChange={handleCarModel} name="auto" id="auto" value={carBrand} required={carBrand === 'none' ? true : false}>
                         <option value='none'  > - Wybierz -</option>

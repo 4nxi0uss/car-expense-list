@@ -45,8 +45,8 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
     }
 
 
-    const handleEdit = () => {
-        console.log('edit')
+    const handleEdit = () => { //editMode on
+        // console.log('edit')
         setIsOpenPopup(true)
     }
 
