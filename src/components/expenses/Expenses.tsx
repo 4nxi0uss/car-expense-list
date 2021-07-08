@@ -15,7 +15,7 @@ const Expenses = () => {
         keyObjectArray.push(property)
     }
 
-    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} id={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} />))
+    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} id={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} createDate={list[`${el}`].createDate} />))
 
 
     const calculatedExpenses = () => {

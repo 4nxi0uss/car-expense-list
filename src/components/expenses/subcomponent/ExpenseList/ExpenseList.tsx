@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext,useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { StoreContex } from '../../../../store/StoreProvider';
 
@@ -10,7 +10,7 @@ import './ExpenseList.scss'
 
 import EditMode from '../EditMode/EditMode';
 
-const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 50, carBrand = "Ford", id }: any) => {
+const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 50, carBrand = "Ford", id, createDate }: any) => {
 
     const [isOpenPopup, setIsOpenPopup] = useState(false)
 
@@ -36,24 +36,24 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
         )
     }
 
-    const hidePopup = (event:any) => {
-        if(event){
-           event.preventDefault() 
+    const hidePopup = (event: any) => {
+        if (event) {
+            event.preventDefault()
         }
-        
+
         setIsOpenPopup(false);
     }
 
 
-    const handleEdit = ()=>{
+    const handleEdit = () => {
         console.log('edit')
-            setIsOpenPopup(true)  
+        setIsOpenPopup(true)
     }
 
     // edit mode with drop down menu or with popup window
 
 
-    return ( 
+    return (
         <li className="liList">
             <article className="expenseList">
                 <h3>{`Zakupy dotyczące utrzymania samochodu`}</h3>
@@ -63,7 +63,7 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
                 <p>{`Zakupiony w dniu: ${date}`}</p>
                 <button onClick={handleDelete} className='btn'>usuń</button>
                 <button onClick={handleEdit} className='btn'>edytuj</button>
-                <EditMode id={id} isOpenPopup={isOpenPopup} hidePopup={hidePopup}/>
+                <EditMode key={id} id={id} isOpenPopup={isOpenPopup} hidePopup={hidePopup} priceFromExpensesList={price} dateFromExpensesList={date} carBrandFromExpensesList={carBrand} productNameFromExpensesList={productName} createDateFromExpensesList={createDate} />
             </article>
         </li>
     )

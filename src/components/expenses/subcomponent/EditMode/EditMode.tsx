@@ -10,22 +10,20 @@ import './EditMode.scss'
 import { useContext } from 'react';
 import { StoreContex } from '../../../../store/StoreProvider';
 
-const EditMode = ({ isOpenPopup, hidePopup, id }: any) => {
+const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromExpensesList, carBrandFromExpensesList, productNameFromExpensesList, createDateFromExpensesList }: any) => {
 
     const { list } = useContext(StoreContex)
-
-    const [price, setPrice] = useState<number>(Number(''));
-    const [productName, setProductName] = useState<string>('');
-    const [buyDate, setBuyDate] = useState<string>('');
-    const [carBrand, setCarBrand] = useState<string>('');
-    const [showText, setShowText] = useState<boolean>(false);
 
     const keyObjectArrayInEditMode: string[] = []
     for (const property in list) {
         keyObjectArrayInEditMode.push(property)
     }
 
-
+    const [price, setPrice] = useState<number>(Number(priceFromExpensesList));
+    const [productName, setProductName] = useState<string>(productNameFromExpensesList);
+    const [buyDate, setBuyDate] = useState<string>(dateFromExpensesList);
+    const [carBrand, setCarBrand] = useState<string>(carBrandFromExpensesList);
+    const [showText, setShowText] = useState<boolean>(false);
 
 
     const handlePrice = (event: any) => {
@@ -41,12 +39,12 @@ const EditMode = ({ isOpenPopup, hidePopup, id }: any) => {
         setCarBrand(event?.target.value)
     }
 
-    const handleClearStateOfInput = () => {
-        setPrice(Number(''));
-        setProductName('');
-        setBuyDate('');
-        setCarBrand('');
-    }
+    // const handleClearStateOfInput = () => {
+    //     setPrice(Number(''));
+    //     setProductName('');
+    //     setBuyDate('');
+    //     setCarBrand('');
+    // }
 
     const handleSubmit = (e: any) => {
 
@@ -58,13 +56,15 @@ const EditMode = ({ isOpenPopup, hidePopup, id }: any) => {
             console.log(price, productName, buyDate, carBrand)
             setShowText(false)
 
-            keyObjectArrayInEditMode.map((key:any)=>{
+            keyObjectArrayInEditMode.map((key: any) => {
 
                 if (list[`${key}`].id === id) {
                     set(ref(database, `/ToDo/${id}`), {
-                        price,
+                        price: Number(price),
                         productName,
+                        createDate: createDateFromExpensesList,
                         date: buyDate,
+                        id,
                         carBrand,
                         editDate: new Date().toUTCString()
                     });
@@ -72,18 +72,17 @@ const EditMode = ({ isOpenPopup, hidePopup, id }: any) => {
 
                 return (null)
 
-            
-        })
+
+            })
 
         }
 
-        handleClearStateOfInput()
+
         e.preventDefault()
 
     }
     const handleCancle = (e: any) => {
         e.preventDefault();
-        handleClearStateOfInput();
         setShowText(false)
         hidePopup()
     }

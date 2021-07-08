@@ -18,7 +18,9 @@ export const StoreContex = createContext<null | any>(null)
 
 
 const StoreProvider = ({ children }: any) => {
-    const [list, setList] = useState<string | object>('')
+
+
+    const [list, setList] = useState<string>('')
     // const [price, setPrice] = useState<number>(Number(''));
     // const [thing, setThing] = useState<string>('');
     // const [buyDate, setBuyDate] = useState<string>('');
@@ -28,7 +30,6 @@ const StoreProvider = ({ children }: any) => {
         const test = ref(database, '/ToDo')
         onValue(test, (snapshot) => { setList(snapshot.val()) })
     }, [])
-
     return (
         <StoreContex.Provider value={{ list, setList }}>
             {children}
