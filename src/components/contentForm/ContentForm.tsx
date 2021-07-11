@@ -6,10 +6,16 @@ import { ref, set } from "firebase/database"
 
 import { database } from '../FIrebaseUtility/Firebase';
 
+// import {GoogleAuthProvider,getAuth} from 'firebase/auth';
+
 import "./ContentForm.scss"
 import { useState } from 'react';
+import { useContext } from 'react';
+import { StoreContex } from '../../store/StoreProvider';
 
 const ContentForm = () => {
+
+    const { user } = useContext(StoreContex)
 
     const [price, setPrice] = useState<number>(Number(''));
     const [productName, setProductName] = useState<string>('');
@@ -25,10 +31,15 @@ const ContentForm = () => {
     //     id
     // }
 
+    // console.log(user)
+    // console.log(user?.uid)
+
+
     const sendData = (price: number, productName: string, buyDate: string, carBrand: string) => {
 
         // set(ref(database, `ToDo/${nanoid()}`), {
-        set(ref(database, `/ToDo/${id}`), {
+        set(ref(database, `/${user?.uid}/${id}`), {
+            // set(ref(database, `/ToDo/${id}`), {
             id,
             price: Number(price),
             productName: productName,

@@ -14,7 +14,7 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
 
     const [isOpenPopup, setIsOpenPopup] = useState(false)
 
-    const { list } = useContext(StoreContex)
+    const { list, user } = useContext(StoreContex)
 
     const keyObjectArrayInExpenses: string[] = []
     for (const property in list) {
@@ -26,7 +26,7 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
         keyObjectArrayInExpenses.map((key: any) => {
 
             if (list[`${key}`].id === id) {
-                const deleteToDoObject = ref(database, `/ToDo/${id}`);
+                const deleteToDoObject = ref(database, `/${user.uid}/${id}`);
                 remove(deleteToDoObject)
             }
 

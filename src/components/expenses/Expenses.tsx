@@ -8,19 +8,20 @@ import './Expenses.scss'
 
 const Expenses = () => {
 
-    const { list } = useContext(StoreContex)
-
+    const { list, user } = useContext(StoreContex)
+    // console.log(list[`${user.uid}`][`8XYleUm_lP6bMmWDzYn2I`] )
     const keyObjectArray: string[] = []
-    for (const property in list) {
+    for (const property in list[`${user.uid}`]) {
         keyObjectArray.push(property)
     }
 
-    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} id={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} createDate={list[`${el}`].createDate} />))
+    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${user.uid}`][`${el}`].id} id={list[`${user.uid}`][`${el}`].id} date={list[`${user.uid}`][`${el}`].date} carBrand={list[`${user.uid}`][`${el}`].carBrand} price={Number(list[`${user.uid}`][`${el}`].price)} productName={list[`${user.uid}`][`${el}`].productName} createDate={list[`${user.uid}`][`${el}`].createDate} />))
+    // const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} id={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} createDate={list[`${el}`].createDate} />))
 
 
     const calculatedExpenses = () => {
         let spendMoney: number = 0;
-        keyObjectArray.forEach((el: string) => (spendMoney += Number(list[`${el}`].price)));
+        keyObjectArray.forEach((el: string) => (spendMoney += Number(list[`${user.uid}`][`${el}`].price)));
 
         return (spendMoney)
     }

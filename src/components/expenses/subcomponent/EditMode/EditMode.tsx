@@ -12,10 +12,11 @@ import { StoreContex } from '../../../../store/StoreProvider';
 
 const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromExpensesList, carBrandFromExpensesList, productNameFromExpensesList, createDateFromExpensesList }: any) => {
 
-    const { list } = useContext(StoreContex)
+    const { list,user } = useContext(StoreContex)
 
     const keyObjectArrayInEditMode: string[] = []
-    for (const property in list) {
+    // for (const property in list) {
+    for (const property in list[`${user.uid}`]) {
         keyObjectArrayInEditMode.push(property)
     }
 
@@ -58,8 +59,8 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
 
             keyObjectArrayInEditMode.map((key: any) => {
 
-                if (list[`${key}`].id === id) {
-                    set(ref(database, `/ToDo/${id}`), {
+                if (list[`${user.uid}`][`${key}`].id === id) {
+                    set(ref(database, `/${user.uid}/${id}`), {
                         price: Number(price),
                         productName,
                         createDate: createDateFromExpensesList,
@@ -95,7 +96,7 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
                 <form className='formEdit' method='post' onSubmit={handleSubmit} >
                     <label className='label'>
                         Cena:
-                        <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" /> zł
+                        <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" />
                     </label>
                     <label className='label'>
                         Rzecz:
