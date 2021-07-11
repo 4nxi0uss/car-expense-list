@@ -22,7 +22,7 @@ const StoreProvider = ({ children }: any) => {
 
     const [list, setList] = useState<string>()
     const [user, setUser] = useState<object>()
-    
+    const [infoShow, setInfoShow] = useState<boolean>(false);
     // const [price, setPrice] = useState<number>(Number(''));
     // const [thing, setThing] = useState<string>('');
     // const [buyDate, setBuyDate] = useState<string>('');
@@ -32,9 +32,9 @@ const StoreProvider = ({ children }: any) => {
     //     const test = ref(database, `/ToDo`)
     //     onValue(test, (snapshot) => { setList(snapshot.val()) })
     // }, [])
-    
+
     return (
-        <StoreContex.Provider value={{ list, setList, user, setUser }}>
+        <StoreContex.Provider value={{ list, setList, user, setUser, infoShow, setInfoShow }}>
             {children}
         </StoreContex.Provider>
     )

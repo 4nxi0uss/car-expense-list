@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 
 const Header = () => {
 
-    const { user, setUser, setList } = useContext(StoreContex)
+    const { user, setUser, setList, setInfoShow } = useContext(StoreContex)
 
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
@@ -24,6 +24,7 @@ const Header = () => {
     let userUid = '';
 
     const handleSingIn = () => {
+        setInfoShow(false)
         signInWithPopup(auth, provider).then((result: any) => {
             // console.log(result.user);
             setUser(result.user);

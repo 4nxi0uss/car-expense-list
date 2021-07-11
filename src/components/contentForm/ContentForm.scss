@@ -12,6 +12,13 @@
     // top: 200px;
     transition: 1s;
 
+    .infoShowText {
+        color: red;
+        font-size: 150%;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px black;
+    }
+
     .form {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -150,6 +157,7 @@
         transition: 1s;
     }
 }
+
 @media screen and (max-width: 520px) {
     .divForm {
         max-width: 500px;

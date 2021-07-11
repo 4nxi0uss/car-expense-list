@@ -15,7 +15,7 @@ import { StoreContex } from '../../store/StoreProvider';
 
 const ContentForm = () => {
 
-    const { user } = useContext(StoreContex)
+    const { user, infoShow, setInfoShow } = useContext(StoreContex)
 
     const [price, setPrice] = useState<number>(Number(''));
     const [productName, setProductName] = useState<string>('');
@@ -73,7 +73,7 @@ const ContentForm = () => {
     }
 
     const handleSubmit = (e: any) => {
-        e.preventDefault()
+        e.preventDefault();
         // objectThing = {
         //     price,
         //     productName: productName,
@@ -81,7 +81,7 @@ const ContentForm = () => {
         //     carBrand,
         //     id
         // }
-        sendData(price, productName, buyDate, carBrand)
+        (Boolean(user) === true ? sendData(price, productName, buyDate, carBrand) : setInfoShow(true))
         // console.log(objectThing)
         resetFormValues()
     }
@@ -94,6 +94,7 @@ const ContentForm = () => {
 
     return (
         <section className='divForm'>
+            {infoShow === true ? <p className='infoShowText'>Musisz się zaogować aby dodać swój wydatek!</p> : null}
             <form className='form' method='post' onSubmit={handleSubmit}>
                 <label className='label label1'>
                     Cena:
