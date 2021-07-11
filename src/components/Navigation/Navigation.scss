@@ -9,6 +9,8 @@
     background-color: rgb(228, 226, 226);
     // background-color: rgba(175, 175, 175, 0.514);
     justify-content: center;
+    transition: 1s;
+
 
     .list {
         list-style-type: none;
@@ -27,6 +29,10 @@
     .link:hover {
         color: red;
     }
+}
 
-
+@media screen and (max-width: 520px) {
+    .menu {
+        top: 90px;
+    }
 }

@@ -143,3 +143,16 @@
         }
     }
 }
+
+@media screen and (max-width: 594px) {
+    .divForm {
+        max-width: 550px;
+        transition: 1s;
+    }
+}
+@media screen and (max-width: 520px) {
+    .divForm {
+        max-width: 500px;
+        transition: 1s;
+    }
+}
