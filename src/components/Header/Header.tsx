@@ -26,7 +26,7 @@ const Header = () => {
     const handleSingIn = () => {
         setInfoShow(false)
         signInWithPopup(auth, provider).then((result: any) => {
-            // console.log(result.user);
+            console.log(`Zalogowano`);
             setUser(result.user);
             userUid = result.user.uid;
         }).catch((error) => {

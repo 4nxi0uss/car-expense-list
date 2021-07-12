@@ -10,58 +10,47 @@ const Expenses = () => {
 
     const { list, user } = useContext(StoreContex)
     // console.log(list[`${user.uid}`][`8XYleUm_lP6bMmWDzYn2I`] )
-    const keyObjectArray: string[] = []
-    for (const property in list[`${user.uid}`]) {
-        keyObjectArray.push(property)
-    }
+    // const keyObjectArray: string[] = []
+    // for (const property in list[`${user.uid}`]) {
+    //     keyObjectArray.push(property)
+    // }
 
-    const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${user.uid}`][`${el}`].id} id={list[`${user.uid}`][`${el}`].id} date={list[`${user.uid}`][`${el}`].date} carBrand={list[`${user.uid}`][`${el}`].carBrand} price={Number(list[`${user.uid}`][`${el}`].price)} productName={list[`${user.uid}`][`${el}`].productName} createDate={list[`${user.uid}`][`${el}`].createDate} />))
+    // console.log(keyObjectArray)
+
+    const keyObjectArrayEntires: any = Object.entries(list[`${user.uid}`]);
+    // console.log(keyObjectArrayEntires.sort((a: any, b: any) => b[1].carBrand - a[1].carBrand))
+    // console.log(keyObjectArrayEntires.sort( (a: any, b: any) => console.log( b[1].carBrand , a[1].carBrand )))
+    const sortedArray: any = []
+    keyObjectArrayEntires.forEach((element: any) => {
+        sortedArray.push([String(element[1].price), element[1].id])
+    })
+
+    // sortedArray.sort((a: any, b: any) => a[0] - b[0]).map((el:any)=>{
+    //     console.log(el[1])
+
+    //     return(null)
+    // })
+    // console.log(keyObjectArrayKeys)
+    // console.log(keyObjectArrayValues.sort().forEach((element:any) => {
+    // console.log(element.date)
+    //   console.log(element.forEach((element2:any) => {
+    //       console.log(element2)
+    //   }))  
+    // }))
+
+    const expenseListElement = sortedArray.sort((a: any, b: any) => a[0] - b[0]).map((el: any) => (<ExpenseList key={list[`${user.uid}`][`${el[1]}`].id} id={list[`${user.uid}`][`${el[1]}`].id} date={list[`${user.uid}`][`${el[1]}`].date} carBrand={list[`${user.uid}`][`${el[1]}`].carBrand} price={Number(list[`${user.uid}`][`${el[1]}`].price)} productName={list[`${user.uid}`][`${el[1]}`].productName} createDate={list[`${user.uid}`][`${el[1]}`].createDate} />))
+    // const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${user.uid}`][`${el}`].id} id={list[`${user.uid}`][`${el}`].id} date={list[`${user.uid}`][`${el}`].date} carBrand={list[`${user.uid}`][`${el}`].carBrand} price={Number(list[`${user.uid}`][`${el}`].price)} productName={list[`${user.uid}`][`${el}`].productName} createDate={list[`${user.uid}`][`${el}`].createDate} />))
     // const expenseListElement = keyObjectArray.map((el: any) => (<ExpenseList key={list[`${el}`].id} id={list[`${el}`].id} date={list[`${el}`].date} carBrand={list[`${el}`].carBrand} price={Number(list[`${el}`].price)} productName={list[`${el}`].productName} createDate={list[`${el}`].createDate} />))
 
 
     const calculatedExpenses = () => {
         let spendMoney: number = 0;
-        keyObjectArray.forEach((el: string) => (spendMoney += Number(list[`${user.uid}`][`${el}`].price)));
+        sortedArray.sort((a: any, b: any) => a[0] - b[0]).forEach((el: string) => (spendMoney += Number(list[`${user.uid}`][`${el[1]}`].price)));
+        // keyObjectArray.forEach((el: string) => (spendMoney += Number(list[`${user.uid}`][`${el}`].price)));
 
         return (spendMoney)
     }
 
-
-
-
-
-
-    // const prettierCurencyValue = (value:string)=>{
-    // console.log(value.includes('.'))
-    // console.log(value.indexOf('.'))
-    // console.log(value.slice(0, 4))
-    // let prettierValue : any ='';
-    // if (value.includes('.')){
-    // prettierValue = value.slice(0, value.indexOf('.'));
-    // return( value.slice(0, value.indexOf('.')))
-
-    // }
-    // console.log(prettierValue.length)
-    // console.log(Array(prettierValue))
-
-
-    // prettierValue = prettierValue.split('')
-    // prettierValue = Array(prettierValue)
-    // console.log(prettierValue)
-    // console.log(typeof(prettierValue))
-    // console.log(prettierValue[0].join(' ') )
-
-    //     for (let i:number=0 ; i <prettierValue.length; i++){
-    //         if(i%3 === 0){
-
-    //         }
-    //     }
-
-    //     return( prettierValue)
-    // }
-
-    // prettierCurencyValue(calculatedExpenses())
-    // console.log(prettierCurencyValue(calculatedExpenses()))
 
     return (
         <section className='sectionExpenses'>
@@ -70,11 +59,8 @@ const Expenses = () => {
                 {expenseListElement}
             </ul>
             <div className='expensesCalculating'>{`Łączne wydatki ${calculatedExpenses()} zł.`}</div>
-            {/* <div className='expensesCalculating'>{`Łączne wydatki ${prettierCurencyValue(calculatedExpenses())} zł.`}</div> */}
         </section>
     )
 }
 
 export default Expenses;
-
-// https://stackoverflow.com/questions/14810506/map-function-for-objects-instead-of-arrays    https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Statements/for...in   https://stackoverflow.com/questions/32716929/best-way-to-model-identifiers-unique-id-in-json   https://developer.mozilla.org/pl/docs/Web/JavaScript/Guide/Loops_and_iteration#for...in     https://stackoverflow.com/questions/8131838/returning-values-out-of-for-loop-in-javascript       check tomorrow
