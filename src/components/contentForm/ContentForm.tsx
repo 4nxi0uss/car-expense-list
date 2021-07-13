@@ -110,7 +110,7 @@ const ContentForm = () => {
                 </label>
                 <label className='label label4' >
                     Auto:
-                    <select onChange={handleCarModel} name="auto" id="auto" value={carBrand} required={carBrand === 'none' ? true : false}>
+                    <select onChange={handleCarModel} /*name="auto" id="auto"*/ value={carBrand} required={carBrand === 'none' ? true : false}>
                         <option value='none'  > - Wybierz -</option>
                         <option value="ford">Ford</option>
                         <option value="hyundai">Hyundai</option>
