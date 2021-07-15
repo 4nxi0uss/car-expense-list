@@ -6,8 +6,6 @@ import { ref, set } from "firebase/database"
 
 import { database } from '../FIrebaseUtility/Firebase';
 
-// import {GoogleAuthProvider,getAuth} from 'firebase/auth';
-
 import "./ContentForm.scss"
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -22,24 +20,11 @@ const ContentForm = () => {
     const [buyDate, setBuyDate] = useState<string>('');
     const [carBrand, setCarBrand] = useState<string>('');
 
-    const id = nanoid()
-    // let objectThing = {
-    //     price,
-    //     productName: productName,
-    //     date: buyDate,
-    //     carBrand,
-    //     id
-    // }
+    const id = nanoid() //randomize id 
 
-    // console.log(user)
-    // console.log(user?.uid)
+    const sendData = (price: number, productName: string, buyDate: string, carBrand: string)  => { //send data to database 
 
-
-    const sendData = (price: number, productName: string, buyDate: string, carBrand: string) => {
-
-        // set(ref(database, `ToDo/${nanoid()}`), {
         set(ref(database, `/${user?.uid}/${id}`), {
-            // set(ref(database, `/ToDo/${id}`), {
             id,
             price: Number(price),
             productName: productName,
@@ -50,43 +35,35 @@ const ContentForm = () => {
     }
 
 
-    const handlePrice = (event: any) => {
-        const priceValue = event?.target.value
-        setPrice(priceValue)
+    const handlePrice = (event: any) => { //add price do the state
+        setPrice(event?.target.value)
     }
 
-    const handleThing = (event: any) => {
+    const handleProductName = (event: any) => { //add name  do the state
         setProductName(event?.target.value)
     }
-    const handleBuyDate = (event: any) => {
+    const handleBuyDate = (event: any) => {//add date do the state
         setBuyDate(event?.target.value)
     }
-    const handleCarModel = (event: any) => {
+    const handleCarModel = (event: any) => {//add car model do the state
         setCarBrand(event.target.value)
     }
 
-    const resetFormValues = () => {
+    const resetFormValues = () => { //reset all input 
         setPrice(Number(''));
         setProductName('');
         setBuyDate('')
         setCarBrand('')
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: any) => { //submit form 
         e.preventDefault();
-        // objectThing = {
-        //     price,
-        //     productName: productName,
-        //     date: buyDate,
-        //     carBrand,
-        //     id
-        // }
+       
         (Boolean(user) === true ? sendData(price, productName, buyDate, carBrand) : setInfoShow(true))
-        // console.log(objectThing)
         resetFormValues()
     }
 
-    const handleReset = (e: any) => {
+    const handleReset = (e: any) => { 
         e.preventDefault()
         resetFormValues()
         console.log('reset')
@@ -102,7 +79,7 @@ const ContentForm = () => {
                 </label>
                 <label className='label label2'>
                     Rzecz:
-                    <input onChange={handleThing} type="text" value={productName} placeholder="Zakup... np: Paliwo" required />
+                    <input onChange={handleProductName} type="text" value={productName} placeholder="Zakup... np: Paliwo" required />
                 </label>
                 <label className='label label3'>
                     Data:

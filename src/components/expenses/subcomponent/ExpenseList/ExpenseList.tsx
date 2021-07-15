@@ -17,12 +17,12 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
     const { list, user } = useContext(StoreContex)
 
     const keyObjectArrayInExpenses: string[] = []
-    for (const property in list[`${user.uid}`]) {
+    for (const property in list[`${user.uid}`]) { // get id from object 
         keyObjectArrayInExpenses.push(property)
     }
 
-    const handleDelete = () => {
-
+    const handleDelete = () => { //delete one part of list 
+ 
         keyObjectArrayInExpenses.map((key: any) => {
 
             if (list[`${user.uid}`][`${key}`].id === id) {
@@ -46,7 +46,6 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
 
 
     const handleEdit = () => { //editMode on
-        // console.log('edit')
         setIsOpenPopup(true)
     }
 
