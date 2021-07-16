@@ -4,59 +4,55 @@ import ReactDOM from "react-dom";
 
 import './Modal.scss'
 
-const Modal = ({children, isOpen, handleOnClose,shouldBeCloseOnOutsideClick}:any)=>{
+const Modal = ({ children, isOpen, handleOnClose, shouldBeCloseOnOutsideClick }: any) => {
 
-// console.log('modal')
+  const modalRef = useRef<any>(null)
+  const previousActiveElement = useRef<any>(null);
 
-    const modalRef = useRef<any>(null)
-    // console.log(modalRef.current)
-    const previousActiveElement = useRef<any>(null);
-    // console.log(previousActiveElement.current)
+  useEffect(() => {
+    if (!modalRef.current) {
+      return;
+    }
 
-    useEffect(() => {
-        if (!modalRef.current) {
-          return;
-        }
-    
-        const { current: modal } = modalRef;
-    
-        if (isOpen) {
-          previousActiveElement.current = document.activeElement;
-          modal.showModal();
-        } else if (previousActiveElement.current) {
-          modal.close();
-          previousActiveElement.current.focus();
-        }
-      }, [isOpen]);
+    const { current: modal } = modalRef; //destructurization modalRef
 
-      useEffect(() => {
-        const { current: modal } = modalRef;
-    
-        const handleCancel = (e:any) => {
-          e.preventDefault();
-          handleOnClose();
-        };
-    
-        modal.addEventListener("cancel", handleCancel);
-        return () => {
-          modal.removeEventListener("cancel", handleCancel);
-        }
-      }, [handleOnClose]);
+    if (isOpen) {  //open modal 
+      previousActiveElement.current = document.activeElement;
+      modal.showModal();
+    } else if (previousActiveElement.current) { //close modal
+      modal.close();
+      previousActiveElement.current.focus();
+    }
+  }, [isOpen]);
 
-      const handleOutsideClick = ({ target }:any) => {
-        const { current } = modalRef;
-    
-        if (shouldBeCloseOnOutsideClick && target === current) {
-          handleOnClose();
-        }
-      };
+  useEffect(() => {
+    const { current: modal } = modalRef;
 
-    return ReactDOM.createPortal((
-        <dialog className='modal' ref={modalRef} onClick={handleOutsideClick}>
-            {children}
-        </dialog>
-    ), document.body
-    );
+    const handleCancel = (e: any) => {
+      e.preventDefault();
+      handleOnClose();
+    };
+
+    modal.addEventListener("cancel", handleCancel);
+    return () => {
+      modal.removeEventListener("cancel", handleCancel);
+    }
+  }, [handleOnClose]);
+
+  const handleOutsideClick = ({ target }: any) => { //function to close modal on outside click
+    const { current } = modalRef;
+
+    if (shouldBeCloseOnOutsideClick && target === current) {
+      handleOnClose();
+    }
+  };
+
+  return ReactDOM.createPortal(( // portal for modal
+    <dialog className='modal' ref={modalRef} onClick={handleOutsideClick}>
+      {children}
+    </dialog>
+  ), document.body
+  );
 };
 
 export default Modal;

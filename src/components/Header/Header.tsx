@@ -14,13 +14,13 @@ const Header = () => {
 
     const { user, setUser, setList, setInfoShow } = useContext(StoreContex)
 
-    const provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();  //google authentication
     const auth = getAuth();
     auth.languageCode = 'pl';
 
     let userUid = '';
 
-    const handleSingIn = () => {
+    const handleSingIn = () => {  //sing in app
         setInfoShow(false)
         signInWithPopup(auth, provider).then((result: any) => {
             console.log(`Zalogowano`);
@@ -31,7 +31,7 @@ const Header = () => {
         });
     }
 
-    const handleSingOut = () => {
+    const handleSingOut = () => {  //sing out app
         signOut(auth).then((result: any) => {
             console.log(`Wylogowano`)
             setUser()
@@ -40,9 +40,9 @@ const Header = () => {
         })
     }
 
-    useEffect(() => {
-        const test = ref(database, `/${userUid}`)
-        onValue(test, (snapshot) => { setList(snapshot.val()) })
+    useEffect(() => { //get a list of expenses from database
+        const listOfExpenses = ref(database, `/${userUid}`)
+        onValue(listOfExpenses, (snapshot) => { setList(snapshot.val()) })
     }, [userUid, setList])
 
     return (
