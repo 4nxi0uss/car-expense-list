@@ -15,8 +15,9 @@ const Content = () => {
     const { user } = useContext(StoreContex)
 
     return (
+        // render content
         <main className="main">
-            <Switch>
+            <Switch> 
                 <Route exact path="/" render={() => <ContentForm />} />
                 {Boolean(user) === false ? <Redirect from="/expenses" to='/' /> : <Route exact path="/expenses" render={() => <Expenses />} />}
                 {/* <Route exact path="/expenses" render={() => <Expenses />} /> */}

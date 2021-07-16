@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import './Header.scss'
 
 import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
-
 
 import { onValue, ref } from '@firebase/database';
 import { database } from '../FIrebaseUtility/Firebase';
@@ -47,8 +44,6 @@ const Header = () => {
         const test = ref(database, `/${userUid}`)
         onValue(test, (snapshot) => { setList(snapshot.val()) })
     }, [userUid, setList])
-
-    // console.log(Boolean(user))
 
     return (
         <div>

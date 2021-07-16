@@ -15,51 +15,41 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
     const { list,user } = useContext(StoreContex)
 
     const keyObjectArrayInEditMode: string[] = []
-    // for (const property in list) {
     for (const property in list[`${user.uid}`]) {
         keyObjectArrayInEditMode.push(property)
     }
 
+    //state
     const [price, setPrice] = useState<number>(Number(priceFromExpensesList));
     const [productName, setProductName] = useState<string>(productNameFromExpensesList);
     const [buyDate, setBuyDate] = useState<string>(dateFromExpensesList);
     const [carBrand, setCarBrand] = useState<string>(carBrandFromExpensesList);
     const [showText, setShowText] = useState<boolean>(false);
 
-
-    const handlePrice = (event: any) => {
+    const handlePrice = (event: any) => { // add price to edit mode 
         setPrice(event?.target.value)
     }
-    const handleProductName = (event: any) => {
+    const handleProductName = (event: any) => {// add product name to edit mode 
         setProductName(event?.target.value)
     }
-    const handleBuyDate = (event: any) => {
+    const handleBuyDate = (event: any) => {// add date to edit mode 
         setBuyDate(event?.target.value)
     }
-    const handleCarModel = (event: any) => {
+    const handleCarModel = (event: any) => {// add car model to edit mode 
         setCarBrand(event?.target.value)
     }
 
-    // const handleClearStateOfInput = () => {
-    //     setPrice(Number(''));
-    //     setProductName('');
-    //     setBuyDate('');
-    //     setCarBrand('');
-    // }
-
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: any) => { // submit edit form 
 
         if (price === 0 && productName === '' && buyDate === '' && carBrand === '') {
-            console.log(price, productName, buyDate, carBrand)
             setShowText(true)
         } else {
             hidePopup()
-            // console.log(price, productName, buyDate, carBrand)
             setShowText(false)
 
-            keyObjectArrayInEditMode.map((key: any) => {
+            keyObjectArrayInEditMode.map((key: any) => { 
 
-                if (list[`${user.uid}`][`${key}`].id === id) {
+                if (list[`${user.uid}`][`${key}`].id === id) { //send edit data to database
                     set(ref(database, `/${user.uid}/${id}`), {
                         price: Number(price),
                         productName,
@@ -82,7 +72,7 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
         e.preventDefault()
 
     }
-    const handleCancle = (e: any) => {
+    const handleCancle = (e: any) => { // cancel editing
         e.preventDefault();
         setShowText(false)
         hidePopup()
