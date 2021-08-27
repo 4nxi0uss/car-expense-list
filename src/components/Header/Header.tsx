@@ -31,7 +31,7 @@ const Header = () => {
         });
     }
 
-    console.log(userUid)
+    // console.log(userUid)
 
     const handleSingOut = () => {  //sing out app
         signOut(auth).then((result: any) => {
@@ -43,12 +43,12 @@ const Header = () => {
     }
 
     useEffect(() => { //get a list of expenses from database
-        console.log(userUid)
+        // console.log(userUid)
         const listOfExpenses = ref(database, `/${userUid}`)
         onValue(listOfExpenses, (snapshot) => { setList(snapshot.val()) })
     }, [userUid, setList])
 
-    console.log(list)
+    // console.log(list)
 
     return (
         <div>
