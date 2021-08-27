@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/car-payment-calculator/static/css/main.a23b7a5b.chunk.css",
+    "main.js": "/car-payment-calculator/static/js/main.6aa6d8ce.chunk.js",
+    "main.js.map": "/car-payment-calculator/static/js/main.6aa6d8ce.chunk.js.map",
+    "runtime-main.js": "/car-payment-calculator/static/js/runtime-main.838313e8.js",
+    "runtime-main.js.map": "/car-payment-calculator/static/js/runtime-main.838313e8.js.map",
+    "static/js/2.a4e4895b.chunk.js": "/car-payment-calculator/static/js/2.a4e4895b.chunk.js",
+    "static/js/2.a4e4895b.chunk.js.map": "/car-payment-calculator/static/js/2.a4e4895b.chunk.js.map",
+    "static/js/3.a55475ea.chunk.js": "/car-payment-calculator/static/js/3.a55475ea.chunk.js",
+    "static/js/3.a55475ea.chunk.js.map": "/car-payment-calculator/static/js/3.a55475ea.chunk.js.map",
+    "index.html": "/car-payment-calculator/index.html",
+    "static/css/main.a23b7a5b.chunk.css.map": "/car-payment-calculator/static/css/main.a23b7a5b.chunk.css.map",
+    "static/js/2.a4e4895b.chunk.js.LICENSE.txt": "/car-payment-calculator/static/js/2.a4e4895b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.838313e8.js",
+    "static/js/2.a4e4895b.chunk.js",
+    "static/css/main.a23b7a5b.chunk.css",
+    "static/js/main.6aa6d8ce.chunk.js"
+  ]
+}
