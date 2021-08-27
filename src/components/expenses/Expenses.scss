@@ -8,6 +8,13 @@
         max-width: 750px;
         left: 50%;
         transform: translateX(-50%);
+
+        .nonExpenses {
+            text-transform: uppercase;
+            font-weight: 700;
+            text-align: center;
+            font-size: clamp(10px, 10px + 3vw, 50px);
+        }
     }
 
     .expensesCalculating {
@@ -26,9 +33,10 @@
         box-shadow: 3px 2px 6px black;
     }
 
-    .sort{
+    .sort {
         margin-left: 10px;
-        .sortSelect{
+
+        .sortSelect {
             padding: 2px;
             margin-left: 5px;
             border-radius: 10px;

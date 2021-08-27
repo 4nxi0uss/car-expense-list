@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useContext, useState } from 'react';
 
 import { StoreContex } from '../../../../store/StoreProvider';
@@ -22,7 +21,7 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
     }
 
     const handleDelete = () => { //delete one part of list 
- 
+
         keyObjectArrayInExpenses.map((key: any) => {
 
             if (list[`${user.uid}`][`${key}`].id === id) {
