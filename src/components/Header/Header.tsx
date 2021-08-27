@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 
 const Header = () => {
 
-    const { user, setUser, setList, setInfoShow } = useContext(StoreContex)
+    const { user, setUser, list, setList, setInfoShow } = useContext(StoreContex)
 
     const provider = new GoogleAuthProvider();  //google authentication
     const auth = getAuth();
@@ -25,11 +25,13 @@ const Header = () => {
         signInWithPopup(auth, provider).then((result: any) => {
             console.log(`Zalogowano`);
             setUser(result.user);
-            userUid = result.user.uid;
+            // userUid = result.user.uid;
         }).catch((error) => {
             console.warn(error)
         });
     }
+
+    console.log(userUid)
 
     const handleSingOut = () => {  //sing out app
         signOut(auth).then((result: any) => {
@@ -41,9 +43,12 @@ const Header = () => {
     }
 
     useEffect(() => { //get a list of expenses from database
+        console.log(userUid)
         const listOfExpenses = ref(database, `/${userUid}`)
         onValue(listOfExpenses, (snapshot) => { setList(snapshot.val()) })
     }, [userUid, setList])
+
+    console.log(list)
 
     return (
         <div>
@@ -52,7 +57,7 @@ const Header = () => {
                     LOGO
                 </div>
                 <h1 className="title">Lista wydatków na samochód</h1>
-                <button onClick={Boolean(user) === true ? handleSingOut : handleSingIn}>{Boolean(user) === true ? `Wyloguj` : `Zaloguj`}</button>
+                <button onClick={Boolean(user) === true ? handleSingOut : handleSingIn}>{Boolean(user) === true ? `Wyloguj` : `Zaloguj za pomocą Google`}</button>
             </header>
         </div>
     )

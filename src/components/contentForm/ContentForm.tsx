@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { nanoid } from 'nanoid';
 
 import { ref, set } from "firebase/database"
@@ -22,7 +20,7 @@ const ContentForm = () => {
 
     const id = nanoid() //randomize id 
 
-    const sendData = (price: number, productName: string, buyDate: string, carBrand: string)  => { //send data to database 
+    const sendData = (price: number, productName: string, buyDate: string, carBrand: string) => { //send data to database 
 
         set(ref(database, `/${user?.uid}/${id}`), {
             id,
@@ -58,12 +56,12 @@ const ContentForm = () => {
 
     const handleSubmit = (e: any) => { //submit form 
         e.preventDefault();
-       
+
         (Boolean(user) === true ? sendData(price, productName, buyDate, carBrand) : setInfoShow(true))
         resetFormValues()
     }
 
-    const handleReset = (e: any) => { 
+    const handleReset = (e: any) => {
         e.preventDefault()
         resetFormValues()
         console.log('reset')
@@ -87,7 +85,7 @@ const ContentForm = () => {
                 </label>
                 <label className='label label4' >
                     Auto:
-                    <select onChange={handleCarModel} /*name="auto" id="auto"*/ value={carBrand} required={carBrand === 'none' ? true : false}>
+                    <select onChange={handleCarModel} name="auto" id="auto" value={carBrand} required={carBrand === 'none' ? true : false}>
                         <option value='none'  > - Wybierz -</option>
                         <option value="ford">Ford</option>
                         <option value="hyundai">Hyundai</option>

@@ -12,7 +12,7 @@ import { StoreContex } from '../../../../store/StoreProvider';
 
 const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromExpensesList, carBrandFromExpensesList, productNameFromExpensesList, createDateFromExpensesList }: any) => {
 
-    const { list,user } = useContext(StoreContex)
+    const { list, user } = useContext(StoreContex)
 
     const keyObjectArrayInEditMode: string[] = []
     for (const property in list[`${user.uid}`]) {
@@ -47,7 +47,7 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
             hidePopup()
             setShowText(false)
 
-            keyObjectArrayInEditMode.map((key: any) => { 
+            keyObjectArrayInEditMode.map((key: any) => {
 
                 if (list[`${user.uid}`][`${key}`].id === id) { //send edit data to database
                     set(ref(database, `/${user.uid}/${id}`), {
@@ -98,7 +98,7 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
                     </label>
                     <label className='label' >
                         Auto:
-                        <select onChange={handleCarModel} name="auto" id="auto" value={carBrand} >
+                        <select onChange={handleCarModel} /*name="auto" id="auto"*/ value={carBrand} >
                             <option value='none' > - Wybierz -</option>
                             <option value="ford">Ford</option>
                             <option value="hyundai">Hyundai</option>
