@@ -34,35 +34,43 @@ const ContentForm = () => {
     }
 
 
-    const handlePrice = (event: any) => { //add price do the state
-        setPrice(event?.target.value)
+    //add price do the state
+    const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPrice(Number(event?.target.value))
     }
 
-    const handleProductName = (event: any) => { //add name  do the state
-        setProductName(event?.target.value)
-    }
-    const handleBuyDate = (event: any) => {//add date do the state
-        setBuyDate(event?.target.value)
-    }
-    const handleCarModel = (event: any) => {//add car model do the state
-        setCarBrand(event.target.value)
+    //add name  do the state
+    const handleProductName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setProductName(String(event?.target.value))
     }
 
-    const resetFormValues = () => { //reset all input 
+    //add date do the state
+    const handleBuyDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setBuyDate(String(event?.target.value))
+    }
+
+    //add car model do the state
+    const handleCarModel = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setCarBrand(String(event.target.value))
+    }
+
+    //reset all input 
+    const resetFormValues = () => {
         setPrice(Number(''));
         setProductName('');
         setBuyDate('')
         setCarBrand('')
     }
 
-    const handleSubmit = (e: any) => { //submit form 
+    //submit form 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         (Boolean(user) === true ? sendData(price, productName, buyDate, carBrand) : setInfoShow(true))
         resetFormValues()
     }
 
-    const handleReset = (e: any) => {
+    const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         resetFormValues()
         console.log('reset')

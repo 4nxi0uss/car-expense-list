@@ -9,7 +9,14 @@ import './ExpenseList.scss'
 
 import EditMode from '../EditMode/EditMode';
 
-const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 50, carBrand = "Ford", id, createDate }: any) => {
+const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 50, carBrand = "Ford", id, createDate }: {
+    date?: string;
+    productName?: string;
+    price?: number;
+    carBrand?: string;
+    id: string;
+    createDate: string;
+}) => {
 
     const [isOpenPopup, setIsOpenPopup] = useState(false)
 
@@ -22,7 +29,7 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
 
     const handleDelete = () => { //delete one part of list 
 
-        keyObjectArrayInExpenses.map((key: any) => {
+        keyObjectArrayInExpenses.map((key: string) => {
 
             if (list[`${user.uid}`][`${key}`].id === id) {
                 const deleteToDoObject = ref(database, `/${user.uid}/${id}`);

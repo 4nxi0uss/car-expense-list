@@ -10,7 +10,16 @@ import './EditMode.scss'
 import { useContext } from 'react';
 import { StoreContex } from '../../../../store/StoreProvider';
 
-const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromExpensesList, carBrandFromExpensesList, productNameFromExpensesList, createDateFromExpensesList }: any) => {
+const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromExpensesList, carBrandFromExpensesList, productNameFromExpensesList, createDateFromExpensesList }: {
+    isOpenPopup: boolean;
+    hidePopup: any;
+    id: string;
+    priceFromExpensesList: number;
+    dateFromExpensesList: string;
+    carBrandFromExpensesList: string;
+    productNameFromExpensesList: string;
+    createDateFromExpensesList: string;
+}) => {
 
     const { list, user } = useContext(StoreContex)
 
@@ -26,20 +35,25 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
     const [carBrand, setCarBrand] = useState<string>(carBrandFromExpensesList);
     const [showText, setShowText] = useState<boolean>(false);
 
-    const handlePrice = (event: any) => { // add price to edit mode 
-        setPrice(event?.target.value)
+    // add price to edit mode
+    const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPrice(Number(event?.target.value))
     }
-    const handleProductName = (event: any) => {// add product name to edit mode 
-        setProductName(event?.target.value)
+    // add product name to edit mode 
+    const handleProductName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setProductName(String(event?.target.value))
     }
-    const handleBuyDate = (event: any) => {// add date to edit mode 
-        setBuyDate(event?.target.value)
+    // add date to edit mode 
+    const handleBuyDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setBuyDate(String(event?.target.value))
     }
-    const handleCarModel = (event: any) => {// add car model to edit mode 
-        setCarBrand(event?.target.value)
+    // add car model to edit mode 
+    const handleCarModel = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setCarBrand(String(event.target.value))
     }
 
-    const handleSubmit = (e: any) => { // submit edit form 
+    // submit edit form
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
         if (price === 0 && productName === '' && buyDate === '' && carBrand === '') {
             setShowText(true)
@@ -49,7 +63,8 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
 
             keyObjectArrayInEditMode.map((key: any) => {
 
-                if (list[`${user.uid}`][`${key}`].id === id) { //send edit data to database
+                //send edit data to database
+                if (list[`${user.uid}`][`${key}`].id === id) {
                     set(ref(database, `/${user.uid}/${id}`), {
                         price: Number(price),
                         productName,
@@ -72,7 +87,7 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
         e.preventDefault()
 
     }
-    const handleCancle = (e: any) => { // cancel editing
+    const handleCancle = (e: React.MouseEvent<HTMLButtonElement>) => { // cancel editing
         e.preventDefault();
         setShowText(false)
         hidePopup()

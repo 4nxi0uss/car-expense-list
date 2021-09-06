@@ -4,7 +4,12 @@ import ReactDOM from "react-dom";
 
 import './Modal.scss'
 
-const Modal = ({ children, isOpen, handleOnClose, shouldBeCloseOnOutsideClick }: any) => {
+const Modal = ({ children, isOpen, handleOnClose, shouldBeCloseOnOutsideClick }: {
+  children: any;
+  isOpen: boolean;
+  handleOnClose: any;
+  shouldBeCloseOnOutsideClick: boolean;
+}) => {
 
   const modalRef = useRef<any>(null)
   const previousActiveElement = useRef<any>(null);
@@ -28,7 +33,7 @@ const Modal = ({ children, isOpen, handleOnClose, shouldBeCloseOnOutsideClick }:
   useEffect(() => {
     const { current: modal } = modalRef;
 
-    const handleCancel = (e: any) => {
+    const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       handleOnClose();
     };

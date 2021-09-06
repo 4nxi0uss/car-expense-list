@@ -25,11 +25,11 @@ const Expenses = () => {
         let spendMoney: number = 0;
         sortedArray.sort((a: any, b: any) => a[0] - b[0]).forEach((el: string) => (spendMoney += Number(list[`${user.uid}`][`${el[1]}`].price)));
 
-        return (spendMoney)
+        return (spendMoney.toFixed(2))
     }
 
-    const handleSort = (e: any) => { //sort
-        setSort(e.target.value)
+    const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => { //sort
+        setSort(String(e.target.value))
     }
 
     return (

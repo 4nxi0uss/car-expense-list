@@ -10,7 +10,11 @@ import { StoreContex } from '../../store/StoreProvider';
 
 import { useEffect } from 'react';
 
+import { result } from '../../Types/Types';
+
 const Header = () => {
+
+
 
     const { user, setUser, setList, setInfoShow } = useContext(StoreContex)
 
@@ -22,7 +26,7 @@ const Header = () => {
 
     const handleSingIn = () => {  //sing in app
         setInfoShow(false)
-        signInWithPopup(auth, provider).then((result: any) => {
+        signInWithPopup(auth, provider).then((result: result) => {
             // console.log(`Zalogowano`);
             setUser(result.user);
             // userUid = result.user.uid;
@@ -32,7 +36,7 @@ const Header = () => {
     }
 
     const handleSingOut = () => {  //sing out app
-        signOut(auth).then((result: any) => {
+        signOut(auth).then((result: void) => {
             // console.log(`Wylogowano`)
             setUser()
         }).catch((error) => {
