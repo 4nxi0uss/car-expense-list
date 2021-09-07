@@ -10,7 +10,7 @@ import { StoreContex } from '../../store/StoreProvider';
 
 import { useEffect } from 'react';
 
-import { result } from '../../Types/Types';
+import { resultType } from '../../Types/Types';
 
 const Header = () => {
 
@@ -26,7 +26,7 @@ const Header = () => {
 
     const handleSingIn = () => {  //sing in app
         setInfoShow(false)
-        signInWithPopup(auth, provider).then((result: result) => {
+        signInWithPopup(auth, provider).then((result: resultType) => {
             // console.log(`Zalogowano`);
             setUser(result.user);
             // userUid = result.user.uid;

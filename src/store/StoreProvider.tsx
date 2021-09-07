@@ -1,8 +1,12 @@
 import { useState, createContext } from 'react';
 
+import { childrenType } from '../Types/Types';
+
 export const StoreContex = createContext<null | any>(null)
 
-const StoreProvider = ({ children }: any) => {
+
+
+const StoreProvider = <T,>({ children }: childrenType<T>) => {
 
 
     const [list, setList] = useState<string>()

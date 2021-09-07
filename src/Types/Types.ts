@@ -1,5 +1,8 @@
-export interface result {
+export interface resultType {
     user: {
         uid: string
     }
+}
+export interface childrenType<T> {
+    children: T
 }

@@ -1,11 +1,9 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StoreContex } from '../../store/StoreProvider';
 
 import ExpenseList from './subcomponent/ExpenseList/ExpenseList';
 
 import './Expenses.scss'
-import { useState } from 'react';
 
 const Expenses = () => {
     const [sort, setSort] = useState<string>()
