@@ -12,10 +12,12 @@ const Navigation = () => {
         <menu className='menu'>
             <nav className='nav'>
                 <ul>  <li className="list">
-                    <Link className='link' to="/">Strona główna</Link>
+                    <Link className='link' to="/">Home</Link>
+                    {/* <Link className='link' to="/">Strona główna</Link> */}
                 </li>
                     {Boolean(user) === true ? <li className="list">
-                        <Link className='link' to="/expenses">Wdatki</Link>
+                        <Link className='link' to="/expenses">Expenses</Link>
+                        {/* <Link className='link' to="/expenses">Wdatki</Link> */}
                     </li> : null}
                 </ul>  </nav>
         </menu>

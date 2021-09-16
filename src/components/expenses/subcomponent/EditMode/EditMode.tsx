@@ -75,17 +75,10 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
                         editDate: new Date().toUTCString()
                     });
                 }
-
                 return (null)
-
-
             })
-
         }
-
-
         e.preventDefault()
-
     }
     const handleCancle = (e: React.MouseEvent<HTMLButtonElement>) => { // cancel editing
         e.preventDefault();
@@ -93,35 +86,36 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
         hidePopup()
     }
 
-
+    console.log(showText)
     return (
         <Modal isOpen={isOpenPopup} handleOnClose={hidePopup} shouldBeCloseOnOutsideClick={false}>
             <div className="divEdit">
-                {showText === true ? <p className="warningText" >nie możesz zapisać nie zmieniając żadnej wartości</p> : null}
+                {showText === true ? <p className="warningText" >You can't save without changing any value</p> : null}
+                {/* {showText === true ? <p className="warningText" >nie możesz zapisać nie zmieniając żadnej wartości</p> : null} */}
                 <form className='formEdit' method='post' onSubmit={handleSubmit} >
                     <label className='label'>
-                        Cena:
-                        <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" />
+                        Price:
+                        <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="Price for item... E.g. $50" required />
                     </label>
                     <label className='label'>
-                        Rzecz:
-                        <input onChange={handleProductName} type="text" value={productName} placeholder="Zakup... np: Paliwo" />
+                        Item:
+                        <input onChange={handleProductName} type="text" value={productName} placeholder='Purchased item... E.g. Fuel' required />
                     </label>
                     <label className='label'>
-                        Data:
-                        <input onChange={handleBuyDate} type="date" value={buyDate} />
+                        Date:
+                        <input onChange={handleBuyDate} type="date" value={buyDate} lang="en" required />
                     </label>
                     <label className='label' >
-                        Auto:
-                        <select onChange={handleCarModel} /*name="auto" id="auto"*/ value={carBrand} >
-                            <option value='none' > - Wybierz -</option>
+                        Car Brand:
+                        <select onChange={handleCarModel} /*name="auto" id="auto"*/ value={carBrand} required={carBrand === 'none' ? true : false}>
+                            <option value='none' > - Choose -</option>
                             <option value="ford">Ford</option>
                             <option value="hyundai">Hyundai</option>
                             <option value="volkswagen">Volkswagen</option>
                         </select>
                     </label>
-                    <button className="btnSubmit" type='submit'>Zapisz</button>
-                    <button onClick={handleCancle} className="btnCancel" type='button'>Anuluj</button>
+                    <button className="btnSubmit" type='submit'>Save</button>
+                    <button onClick={handleCancle} className="btnCancel" type='button'>Cancel</button>
                 </form>
             </div>
         </Modal>

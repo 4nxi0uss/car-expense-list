@@ -33,16 +33,20 @@ const Expenses = () => {
     return (
         <section className='sectionExpenses'>
             <ul className='ulExpenses'>
-                {Boolean(list[`${user.uid}`]) ? expenseListElement : <p className='nonExpenses'>nie wydałeś nawet złotówki</p>}
+                {Boolean(list[`${user.uid}`]) ? expenseListElement : <p className='nonExpenses'>You didn't even spend a buck</p>}
+                {/* {Boolean(list[`${user.uid}`]) ? expenseListElement : <p className='nonExpenses'>nie wydałeś nawet złotówki</p>} */}
             </ul>
-            <div className='expensesCalculating'>{`Łączne wydatki ${calculatedExpenses()} zł.`}
-                <label className='sort' > Sortuj po:
+            <div className='expensesCalculating'>{`Total expenses $${calculatedExpenses()}`}
+                {/* <div className='expensesCalculating'>{`Łączne wydatki ${calculatedExpenses()} zł.`} */}
+                <label className='sort' > Sort:
+                    {/* <label className='sort' > Sortuj po: */}
                     <select className='sortSelect' onChange={handleSort} /*name="auto" id="auto"*/ value={sort}>
-                        <option value="-" disabled={sort !== undefined ? true : false}>-Wybierz-</option>
-                        <option value="price"  >Cena</option>
-                        <option value="carBrand">smochód</option>
-                        <option value="date">data</option>
-                        <option value="productName">produkt</option>
+                        <option value="-" disabled={sort !== undefined ? true : false}>-Choose-</option>
+                        {/* <option value="-" disabled={sort !== undefined ? true : false}>-Wybierz-</option> */}
+                        <option value="price">Price</option>
+                        <option value="carBrand">Car brand</option>
+                        <option value="date">Date</option>
+                        <option value="productName">Item</option>
                     </select>
                 </label>
             </div>

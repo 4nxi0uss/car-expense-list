@@ -81,28 +81,32 @@ const ContentForm = () => {
             {infoShow === true ? <p className='infoShowText'>Musisz się zaogować aby dodać swój wydatek!</p> : null}
             <form className='form' method='post' onSubmit={handleSubmit}>
                 <label className='label label1'>
-                    Cena:
-                    <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} placeholder="cena za rzeczy... np: 50 zł" required />
+                    Price:
+                    {/* Cena: */}
+                    <input onChange={handlePrice} type="number" value={price === 0 ? "" : price} /*placeholder="cena za rzeczy... np: 50 zł"*/ placeholder="Price for item... E.g. $50" required />
                 </label>
                 <label className='label label2'>
-                    Rzecz:
-                    <input onChange={handleProductName} type="text" value={productName} placeholder="Zakup... np: Paliwo" required />
+                    Item:
+                    {/* Rzecz: */}
+                    <input onChange={handleProductName} type="text" value={productName} /*placeholder="Zakupy... np: Paliwo"*/ placeholder='Purchased item... E.g. Fuel' required />
                 </label>
                 <label className='label label3'>
-                    Data:
-                    <input onChange={handleBuyDate} type="date" value={buyDate} required />
+                    Date:
+                    <input onChange={handleBuyDate} type="date" value={buyDate} lang="en" required />
                 </label>
                 <label className='label label4' >
-                    Auto:
+                    Car Brand:
                     <select onChange={handleCarModel} name="auto" id="auto" value={carBrand} required={carBrand === 'none' ? true : false}>
-                        <option value='none'  > - Wybierz -</option>
+                        <option value='none'  > - Choose -</option>
                         <option value="ford">Ford</option>
                         <option value="hyundai">Hyundai</option>
                         <option value="volkswagen">Volkswagen</option>
                     </select>
                 </label>
-                <button type='submit' className='submitBtn' >Zapisz</button>
-                <button onClick={handleReset} className='btn' type='button'>Anuluj</button>
+                <button type='submit' className='submitBtn' >Save</button>
+                {/* <button type='submit' className='submitBtn' >Zapisz</button> */}
+                <button onClick={handleReset} className='btn' type='button'>Cancel</button>
+                {/* <button onClick={handleReset} className='btn' type='button'>Anuluj</button> */}
             </form>
 
         </section>

@@ -61,13 +61,20 @@ const ExpenseList = ({ date = "2021-07-01", productName = "Akumulator", price = 
     return (
         <li className="liList">
             <article className="expenseList">
-                <h3>{`Zakupy dotyczące utrzymania samochodu`}</h3>
-                <p>{`Zakupiony produkt: ${productName}`}</p>
-                <p>{`Przeznaczony do samochodu: ${carBrand}`}</p>
-                <p>{`Kwota zakupu: ${price}zł`}</p>
-                <p>{`Zakupiony w dniu: ${date}`}</p>
-                <button onClick={handleDelete} className='btn'>usuń</button>
-                <button onClick={handleEdit} className='btn'>edytuj</button>
+                <h3>{`Car maintenance purchases`}</h3>
+                {/* <h3>{`Zakupy dotyczące utrzymania samochodu`}</h3> */}
+                <p>{`Purchased item: ${productName}`}</p>
+                {/* <p>{`Zakupiony produkt: ${productName}`}</p> */}
+                <p>{`For the car: ${carBrand}`}</p>
+                {/* <p>{`Przeznaczony do samochodu: ${carBrand}`}</p> */}
+                <p>{`Cost: $${price}`}</p>
+                {/* <p>{`Kwota zakupu: ${price}zł`}</p> */}
+                <p>{`Purchased on: ${date}`}</p>
+                {/* <p>{`Zakupiony w dniu: ${date}`}</p> */}
+                <button onClick={handleDelete} className='btn'>Delete</button>
+                {/* <button onClick={handleDelete} className='btn'>usuń</button> */}
+                <button onClick={handleEdit} className='btn'>Edit</button>
+                {/* <button onClick={handleEdit} className='btn'>edytuj</button> */}
                 <EditMode key={id} id={id} isOpenPopup={isOpenPopup} hidePopup={hidePopup} priceFromExpensesList={price} dateFromExpensesList={date} carBrandFromExpensesList={carBrand} productNameFromExpensesList={productName} createDateFromExpensesList={createDate} />
             </article>
         </li>

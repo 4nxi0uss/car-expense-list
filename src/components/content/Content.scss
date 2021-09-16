@@ -2,5 +2,29 @@
 
     position: relative;
     width: 100vw;
-    top: calc(200px - 120px);
+    top: 8vw;
+}
+@media screen and (min-width: 300px) {
+    .main {
+
+        position: relative;
+        width: 100vw;
+        top: 15vw;
+    }
+}
+@media screen and (min-width: 700px) {
+    .main {
+
+        position: relative;
+        width: 100vw;
+        top: 15vw;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .main {
+
+        position: relative;
+        width: 100vw;
+        top: 8vw;
+    }
 }
