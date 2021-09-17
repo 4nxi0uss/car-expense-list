@@ -3,13 +3,11 @@
     border-radius: 20px;
     padding: 15px;
     margin-bottom: 20px;
-    min-width: 250px;
+    // min-width: 250px;
     font-size: large;
     box-shadow: 2px 4px 10px black;
     overflow: hidden;
     white-space: nowrap;
-
-
 
     .btn {
         padding: 5px 13px 5px 13px;
@@ -29,4 +27,113 @@
 
 .liList {
     list-style-type: none;
+}
+
+@media screen and (min-width: 300px) {
+    .expenseList {
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 20px;
+        // min-width: 250px;
+        width: 100%;
+        font-size: large;
+        box-shadow: 2px 4px 10px black;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .btn {
+            padding: 5px 13px 5px 13px;
+            margin-left: 5px;
+            margin-top: 5px;
+            border: 2px solid black;
+            border-radius: 50px;
+            background-color: white;
+            transition: 300ms;
+        }
+
+        .btn:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    .liList {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        list-style-type: none;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .expenseList {
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 20px;
+        // min-width: 250px;
+        width: 100%;
+        font-size: large;
+        box-shadow: 2px 4px 10px black;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .btn {
+            padding: 5px 13px 5px 13px;
+            margin-left: 5px;
+            margin-top: 5px;
+            border: 2px solid black;
+            border-radius: 50px;
+            background-color: white;
+            transition: 300ms;
+        }
+
+        .btn:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    .liList {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        list-style-type: none;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .expenseList {
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 20px;
+        // min-width: 250px;
+        font-size: large;
+        box-shadow: 2px 4px 10px black;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .btn {
+            padding: 5px 13px 5px 13px;
+            margin-left: 5px;
+            margin-top: 5px;
+            border: 2px solid black;
+            border-radius: 50px;
+            background-color: white;
+            transition: 300ms;
+        }
+
+        .btn:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    .liList {
+        list-style-type: none;
+    }
 }

@@ -86,7 +86,6 @@ const EditMode = ({ isOpenPopup, hidePopup, id, priceFromExpensesList, dateFromE
         hidePopup()
     }
 
-    console.log(showText)
     return (
         <Modal isOpen={isOpenPopup} handleOnClose={hidePopup} shouldBeCloseOnOutsideClick={false}>
             <div className="divEdit">
