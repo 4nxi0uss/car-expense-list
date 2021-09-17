@@ -1,3 +1,5 @@
+LIVE: https://arturzaczek.github.io/car-expense-list/#/
+
 my first app which I will be use every day
 -- this project contain a Firebase (realtime database, Auth) 
 -- you can login to this little app via gmail account 
@@ -6,4 +8,3 @@ my first app which I will be use every day
 
 Technology: TypeScript, SCSS, React-Router, Firebase
 
-But is one little thing, this app is in Polish
