@@ -6,4 +6,3 @@ my first app which I will be use every day
 
 Technology: TypeScript, SCSS, React-Router, Firebase
 
-But is one little thing, this app is in Polish
