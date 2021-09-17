@@ -1,6 +1,6 @@
 .divForm {
     position: relative;
-    background-color: rgba(173, 106, 106, 0.616);
+    background: rgb(255, 94, 94);
     max-width: 950px;
     text-align: center;
     left: 50%;
@@ -144,7 +144,7 @@
 @media screen and (min-width: 300px) {
     .divForm {
         position: relative;
-        background-color: rgba(173, 106, 106, 0.616);
+        background: rgb(255, 94, 94);
         max-width: 950px;
         text-align: center;
         left: 50%;
@@ -219,7 +219,7 @@
 @media screen and (min-width: 700px) {
     .divForm {
         position: relative;
-        background-color: rgba(173, 106, 106, 0.616);
+        background: rgb(255, 94, 94);
         max-width: 950px;
         text-align: center;
         left: 50%;
@@ -298,11 +298,13 @@
 @media screen and (min-width: 1000px) {
     .divForm {
         position: relative;
-        background-color: rgba(173, 106, 106, 0.616);
+        background: rgb(255, 94, 94);
         max-width: 70vw;
         text-align: center;
         left: 50%;
         transform: translateX(-50%);
+        border-radius: 20px;
+        padding: 0.5% 0%;
         // transition: 1s;
     
         .infoShowText {

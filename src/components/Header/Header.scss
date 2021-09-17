@@ -34,7 +34,8 @@
 @media screen and (min-width: 300px) {
     .header {
         height: 15vw;
-        background: rgb(240, 181, 181);
+        background: rgb(255, 94, 94);
+        // background: rgb(240, 181, 181);
         position: fixed;
         display: flex;
         top: 0;
@@ -79,7 +80,7 @@
 @media screen and (min-width: 700px) {
     .header {
         height: 8vw;
-        background: rgb(240, 181, 181);
+        background: rgb(255, 94, 94);
         position: fixed;
         display: flex;
         // transition: 1s;
@@ -127,7 +128,7 @@
 @media screen and (min-width: 1000px) {
     .header {
         height: 5vw;
-        background: rgb(240, 181, 181);
+        background: rgb(255, 94, 94);
         position: fixed;
         display: flex;
         top: 0;
@@ -139,9 +140,12 @@
         transition: 1s;
 
         .logo {
-            background-color: rgb(204, 203, 203);
+            background: url(../../img/Daco_4252785.png) center no-repeat;
+            background-size: contain;
+            border: none;
+            // background-color: rgb(190, 166, 166);
             height: 5vw;
-            height: 4.799vw;
+            height: 4.9vw;
             padding: 10px;
             font-size: 2vw;
         }
@@ -153,9 +157,13 @@
         }
 
         .loginBtn {
-            font-size: 1.5vw;
+            font-size: 1vw;
             display: block;
             cursor: pointer;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid black;
+            box-shadow: 2px 2px  black;
+            padding: 5px;
         }
 
         .loginBtn2 {

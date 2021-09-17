@@ -49,7 +49,7 @@ const Header = () => {
     return (
         <header className='header'>
             <div className='logo'>
-                LOGO
+                {/* LOGO */}
             </div>
             {/* <h1 className="title">Lista wydatków na samochód</h1> */}
             <h1 className="title">Car expenses list</h1>
