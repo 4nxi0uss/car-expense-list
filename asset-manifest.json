@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/car-expense-list/static/css/main.e096e466.chunk.css",
+    "main.css": "/car-expense-list/static/css/main.d5e70860.chunk.css",
     "main.js": "/car-expense-list/static/js/main.8c493cfb.chunk.js",
     "main.js.map": "/car-expense-list/static/js/main.8c493cfb.chunk.js.map",
     "runtime-main.js": "/car-expense-list/static/js/runtime-main.67fc9c0f.js",
@@ -10,14 +10,14 @@
     "static/js/3.a55475ea.chunk.js": "/car-expense-list/static/js/3.a55475ea.chunk.js",
     "static/js/3.a55475ea.chunk.js.map": "/car-expense-list/static/js/3.a55475ea.chunk.js.map",
     "index.html": "/car-expense-list/index.html",
-    "static/css/main.e096e466.chunk.css.map": "/car-expense-list/static/css/main.e096e466.chunk.css.map",
+    "static/css/main.d5e70860.chunk.css.map": "/car-expense-list/static/css/main.d5e70860.chunk.css.map",
     "static/js/2.4be39423.chunk.js.LICENSE.txt": "/car-expense-list/static/js/2.4be39423.chunk.js.LICENSE.txt",
     "static/media/Header.scss": "/car-expense-list/static/media/google.d752f318.png"
   },
   "entrypoints": [
     "static/js/runtime-main.67fc9c0f.js",
     "static/js/2.4be39423.chunk.js",
-    "static/css/main.e096e466.chunk.css",
+    "static/css/main.d5e70860.chunk.css",
     "static/js/main.8c493cfb.chunk.js"
   ]
 }
