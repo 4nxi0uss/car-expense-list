@@ -78,7 +78,7 @@ const ContentForm = () => {
 
     return (
         <section className='divForm'>
-            {infoShow === true ? <p className='infoShowText'>Musisz się zaogować aby dodać swój wydatek!</p> : null}
+            {infoShow === true ? <p className='infoShowText'>You must sign in to add your expenses!</p> : null}
             <form className='form' method='post' onSubmit={handleSubmit}>
                 <label className='label label1'>
                     Price:

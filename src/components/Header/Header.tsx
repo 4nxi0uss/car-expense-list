@@ -24,7 +24,7 @@ const Header = () => {
 
     let userUid = '';
 
-    const handleSingIn = () => {  //sing in app
+    const handleSignIn = () => {  //sing in app
         setInfoShow(false)
         signInWithPopup(auth, provider).then((result: resultType) => {
             setUser(result.user);
@@ -33,7 +33,7 @@ const Header = () => {
         });
     }
 
-    const handleSingOut = () => {  //sing out app
+    const handleSignOut = () => {  //sing out app
         signOut(auth).then((result: void) => {
             setUser()
         }).catch((error) => {
@@ -53,8 +53,8 @@ const Header = () => {
             </div>
             {/* <h1 className="title">Lista wydatków na samochód</h1> */}
             <h1 className="title">Car expenses list</h1>
-            <button className='loginBtn' onClick={Boolean(user) === true ? handleSingOut : handleSingIn}>{Boolean(user) === true ? `Sing Out` : `Sing in Google`}</button>
-            <button className='loginBtn2' onClick={Boolean(user) === true ? handleSingOut : handleSingIn}></button>
+            <button className='loginBtn' onClick={Boolean(user) === true ? handleSignOut : handleSignIn}>{Boolean(user) === true ? `Sign Out` : `Sign in Google`}</button>
+            <button className='loginBtn2' onClick={Boolean(user) === true ? handleSignOut : handleSignIn}></button>
         </header>
     )
 }
